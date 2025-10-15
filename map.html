@@ -1,0 +1,24 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Drone Map - Medi-Drone AI</title>
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+  <div class="container">
+    <h2>🗺️ Drone Tracking</h2>
+    <div id="map">Loading position...</div>
+    <script>
+    function load(){
+      fetch('/drone_position').then(r=>r.json()).then(d=>{
+        document.getElementById('map').innerHTML = 'Position: (' + d.x + ',' + d.y + ')';
+      });
+    }
+    setInterval(load,1000);
+    load();
+    </script>
+    <a href="/home" class="button">🏠 Back</a>
+  </div>
+</body>
+</html>
